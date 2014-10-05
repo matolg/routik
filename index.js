@@ -11,7 +11,15 @@ function hash3Handler() {
 };
 
 var route = new Routik()
-			.addRoute("hash1", hash1Handler)
-			.addRoute("hash2", hash2Handler)
-			.addRoute("hash3", hash3Handler)
-			.run();
+			.addRoute("name1", "hash1", hash1Handler)
+			.addRoute("name2", "hash2", hash2Handler)
+			.addRoute("name3", "hash3", hash3Handler);
+
+route.run();
+
+document.getElementById("hasher").onclick = (function (route) {
+
+	return function() {
+		route.goto("name2");
+	};
+})(route);
